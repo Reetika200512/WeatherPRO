@@ -9,6 +9,57 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/responsive.css" />
   <link rel="stylesheet" href="css/animations.css" />
+  <style>
+    .api-key-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      background: rgba(5, 8, 20, 0.66);
+    }
+
+    .api-key-card {
+      width: min(100%, 380px);
+      padding: 24px;
+      border-radius: 16px;
+      background: var(--surface, #fff);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    .api-key-card h2 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+
+    .api-key-card p {
+      margin: 0 0 12px;
+      color: var(--text-secondary, #5b6472);
+      line-height: 1.5;
+    }
+
+    .api-key-card input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cfd8e3;
+      border-radius: 10px;
+      box-sizing: border-box;
+      font: inherit;
+    }
+
+    .api-key-card button {
+      margin-top: 12px;
+      width: 100%;
+      padding: 10px 12px;
+      border: 0;
+      border-radius: 10px;
+      background: #2f6fed;
+      color: white;
+      font: inherit;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <div class="app-shell">
@@ -145,6 +196,15 @@
   </div>
 
   <div id="toastRegion" class="toast-region" aria-live="assertive" aria-atomic="true"></div>
+
+  <div id="apiKeyModal" class="api-key-modal" hidden>
+    <div class="api-key-card">
+      <h2>Weather API key required</h2>
+      <p>Enter your OpenWeatherMap API key to load weather data for this browser.</p>
+      <input id="apiKeyInput" type="password" placeholder="Paste your API key" autocomplete="off" />
+      <button id="apiKeySaveButton" type="button">Save and continue</button>
+    </div>
+  </div>
 
   <script type="module" src="js/app.js"></script>
 </body>
