@@ -1,0 +1,91 @@
+@keyframes weatherDrift {
+  from {
+    transform: translate3d(-1%, -1%, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(1.5%, 1%, 0) scale(1.03);
+  }
+}
+
+@keyframes skeletonSweep {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sunPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes cloudFloat {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes rainDrop {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+
+.panel,
+.stat-card,
+.hour-card,
+.forecast-row {
+  animation: fadeSlideIn 260ms ease both;
+}
+
+.weather-svg .sun-core {
+  transform-origin: center;
+  animation: sunPulse 3.4s ease-in-out infinite;
+}
+
+.weather-svg .cloud-shape {
+  animation: cloudFloat 4.2s ease-in-out infinite;
+}
+
+.weather-svg .rain-lines {
+  stroke-dasharray: 7 11;
+  animation: rainDrop 780ms linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

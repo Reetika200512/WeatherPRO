@@ -1,0 +1,125 @@
+@media (min-width: 920px) {
+  .weather-layout {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .search-panel,
+  .current-panel,
+  .stats-grid,
+  .hourly-panel,
+  .daily-and-insights {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 860px) {
+  .top-bar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .control-cluster {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .current-panel {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 18px;
+  }
+
+  .hero-icon-wrap {
+    width: 132px;
+    height: 132px;
+    justify-self: end;
+  }
+
+  .current-temp {
+    font-size: 4.8rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .daily-and-insights {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .app-shell {
+    width: min(100% - 20px, 1160px);
+    padding-top: 12px;
+  }
+
+  .control-cluster {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .segmented-control {
+    width: 100%;
+  }
+
+  .segment {
+    flex: 1;
+  }
+
+  .search-form {
+    grid-template-columns: 1fr;
+  }
+
+  .location-button {
+    width: 100%;
+  }
+
+  .current-panel {
+    padding: 22px;
+  }
+
+  .current-temp {
+    font-size: 4rem;
+  }
+
+  .condition-line {
+    font-size: 1.12rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .forecast-row {
+    grid-template-columns: 52px 36px minmax(0, 1fr);
+  }
+
+  .forecast-condition {
+    display: none;
+  }
+
+  .temp-range {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-lockup h1 {
+    font-size: 1.12rem;
+  }
+
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+  }
+
+  .current-temp {
+    font-size: 3.35rem;
+  }
+
+  .hero-icon-wrap {
+    width: 108px;
+    height: 108px;
+  }
+}

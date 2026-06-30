@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-theme-mode="auto" data-weather="clear" data-time="day">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeatherPro</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="top-bar" aria-label="WeatherPro controls">
+      <div class="brand-lockup">
+        <span class="brand-mark" aria-hidden="true">WP</span>
+        <div>
+          <h1>WeatherPro</h1>
+          <p id="lastUpdated">Ready</p>
+        </div>
+      </div>
+
+      <div class="control-cluster">
+        <div class="segmented-control" id="unitToggle" aria-label="Temperature unit">
+          <button type="button" class="segment is-active" data-unit="metric" aria-pressed="true">&deg;C</button>
+          <button type="button" class="segment" data-unit="imperial" aria-pressed="false">&deg;F</button>
+        </div>
+
+        <div class="segmented-control theme-segments" id="themeModeToggle" aria-label="Theme mode">
+          <button type="button" class="segment is-active" data-theme-mode="auto" aria-pressed="true">Auto</button>
+          <button type="button" class="segment" data-theme-mode="light" aria-pressed="false">Light</button>
+          <button type="button" class="segment" data-theme-mode="dark" aria-pressed="false">Dark</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="weather-layout" id="appView">
+      <section class="search-panel" aria-label="Search location">
+        <form id="searchForm" class="search-form" autocomplete="off" role="search">
+          <div class="search-combobox" role="combobox" aria-haspopup="listbox" aria-owns="suggestionsList" aria-expanded="false">
+            <label for="searchInput" class="visually-hidden">City name</label>
+            <span class="field-icon" id="searchIcon" aria-hidden="true"></span>
+            <input
+              id="searchInput"
+              type="search"
+              name="city"
+              placeholder="Search city"
+              aria-autocomplete="list"
+              aria-controls="suggestionsList"
+              aria-expanded="false"
+              required
+            />
+            <button type="submit" class="icon-button search-submit" id="searchSubmitButton" title="Search" aria-label="Search city">
+              <span id="searchButtonIcon" aria-hidden="true"></span>
+            </button>
+            <div id="suggestionsPanel" class="suggestions-panel" hidden>
+              <ul id="suggestionsList" role="listbox" aria-label="City suggestions"></ul>
+            </div>
+          </div>
+
+          <button type="button" id="currentLocationButton" class="icon-button location-button" title="Use current location" aria-label="Use current location">
+            <span id="locationButtonIcon" aria-hidden="true"></span>
+          </button>
+        </form>
+      </section>
+
+      <section class="current-panel panel" aria-labelledby="currentHeading">
+        <div class="current-copy">
+          <p class="eyebrow" id="weatherLocation">Search for a city</p>
+          <h2 id="currentHeading" class="current-temp">--&deg;</h2>
+          <p class="condition-line" id="conditionLabel">Weather will appear here</p>
+          <p class="hero-summary" id="heroSummary">Use search or your current location.</p>
+        </div>
+        <div class="hero-icon-wrap" id="weatherIcon" aria-hidden="true"></div>
+      </section>
+
+      <section class="stats-grid" id="statsGrid" aria-label="Current weather details">
+        <article class="stat-card">
+          <span class="stat-icon" id="feelsIcon" aria-hidden="true"></span>
+          <span class="stat-label">Feels like</span>
+          <strong id="feelsLike">--</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon" id="humidityIcon" aria-hidden="true"></span>
+          <span class="stat-label">Humidity</span>
+          <strong id="humidity">--</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon" id="windIcon" aria-hidden="true"></span>
+          <span class="stat-label">Wind</span>
+          <strong id="windSpeed">--</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon" id="pressureIcon" aria-hidden="true"></span>
+          <span class="stat-label">Pressure</span>
+          <strong id="pressure">--</strong>
+        </article>
+      </section>
+
+      <section class="panel hourly-panel" aria-labelledby="hourlyHeading">
+        <div class="section-heading">
+          <span class="section-icon" id="hourlyIcon" aria-hidden="true"></span>
+          <h2 id="hourlyHeading">Next 24 hours</h2>
+        </div>
+        <div id="hourlyForecast" class="hourly-strip" tabindex="0" aria-label="Hourly forecast"></div>
+      </section>
+
+      <section class="daily-and-insights">
+        <section class="panel daily-panel" aria-labelledby="dailyHeading">
+          <div class="section-heading">
+            <span class="section-icon" id="dailyIcon" aria-hidden="true"></span>
+            <h2 id="dailyHeading">Forecast</h2>
+          </div>
+          <div id="forecastList" class="forecast-list"></div>
+        </section>
+
+        <aside class="insight-stack" aria-label="Weather insights">
+          <section class="panel sun-panel" id="sunCard" aria-labelledby="sunHeading">
+            <div class="section-heading">
+              <span class="section-icon" id="sunIcon" aria-hidden="true"></span>
+              <h2 id="sunHeading">Sun</h2>
+            </div>
+            <div id="sunArc" class="sun-arc"></div>
+          </section>
+
+          <section class="panel index-panel" id="uvCard" aria-labelledby="uvHeading" hidden>
+            <div class="section-heading">
+              <span class="section-icon" id="uvIcon" aria-hidden="true"></span>
+              <h2 id="uvHeading">UV index</h2>
+            </div>
+            <div id="uvContent"></div>
+          </section>
+
+          <section class="panel index-panel" id="aqiCard" aria-labelledby="aqiHeading" hidden>
+            <div class="section-heading">
+              <span class="section-icon" id="aqiIcon" aria-hidden="true"></span>
+              <h2 id="aqiHeading">Air quality</h2>
+            </div>
+            <div id="aqiContent"></div>
+          </section>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <div id="toastRegion" class="toast-region" aria-live="assertive" aria-atomic="true"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

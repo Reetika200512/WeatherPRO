@@ -1,0 +1,99 @@
+:root {
+  color-scheme: light;
+  --font-body: "Google Sans", Inter, Roboto, "Segoe UI", system-ui, -apple-system, sans-serif;
+  --radius-card: 8px;
+  --radius-control: 999px;
+  --shadow-soft: 0 18px 50px rgba(36, 50, 84, 0.14);
+  --shadow-card: 0 8px 28px rgba(36, 50, 84, 0.1);
+  --border-soft: rgba(45, 65, 98, 0.14);
+  --text: #202124;
+  --text-soft: #5f6368;
+  --text-faint: #7a8088;
+  --panel: rgba(255, 255, 255, 0.86);
+  --panel-strong: rgba(255, 255, 255, 0.96);
+  --panel-muted: rgba(248, 250, 255, 0.82);
+  --control-bg: rgba(255, 255, 255, 0.78);
+  --accent: #1a73e8;
+  --accent-strong: #185abc;
+  --accent-soft: rgba(26, 115, 232, 0.16);
+  --good: #188038;
+  --moderate: #f9ab00;
+  --poor: #d93025;
+  --bar-track: rgba(95, 99, 104, 0.16);
+  --skeleton: rgba(218, 226, 239, 0.7);
+  --skeleton-shine: rgba(255, 255, 255, 0.64);
+  --bg-a: #d9ebff;
+  --bg-b: #f7fbff;
+  --bg-c: #fff2d5;
+  --weather-glow: rgba(255, 184, 77, 0.32);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --shadow-soft: 0 18px 52px rgba(0, 0, 0, 0.34);
+  --shadow-card: 0 8px 28px rgba(0, 0, 0, 0.26);
+  --border-soft: rgba(226, 232, 240, 0.14);
+  --text: #f8fafc;
+  --text-soft: #cbd5e1;
+  --text-faint: #94a3b8;
+  --panel: rgba(16, 24, 39, 0.78);
+  --panel-strong: rgba(18, 27, 43, 0.92);
+  --panel-muted: rgba(30, 41, 59, 0.78);
+  --control-bg: rgba(15, 23, 42, 0.74);
+  --accent: #8ab4f8;
+  --accent-strong: #aecbfa;
+  --accent-soft: rgba(138, 180, 248, 0.2);
+  --bar-track: rgba(203, 213, 225, 0.18);
+  --skeleton: rgba(51, 65, 85, 0.86);
+  --skeleton-shine: rgba(148, 163, 184, 0.18);
+}
+
+[data-weather="clear"][data-time="day"] {
+  --bg-a: #a8d8ff;
+  --bg-b: #fff7d8;
+  --bg-c: #ffd17a;
+  --weather-glow: rgba(255, 198, 88, 0.42);
+}
+
+[data-weather="clear"][data-time="night"] {
+  --bg-a: #071327;
+  --bg-b: #142a4d;
+  --bg-c: #273b6b;
+  --weather-glow: rgba(146, 178, 255, 0.2);
+}
+
+[data-weather="clouds"] {
+  --bg-a: #d8e4ee;
+  --bg-b: #f6f8fb;
+  --bg-c: #b8c6d5;
+  --weather-glow: rgba(255, 255, 255, 0.32);
+}
+
+[data-weather="rain"],
+[data-weather="drizzle"] {
+  --bg-a: #809bb7;
+  --bg-b: #d5dde7;
+  --bg-c: #4f6d8f;
+  --weather-glow: rgba(121, 165, 214, 0.34);
+}
+
+[data-weather="thunderstorm"] {
+  --bg-a: #2b334f;
+  --bg-b: #66708f;
+  --bg-c: #d5b45a;
+  --weather-glow: rgba(255, 217, 102, 0.24);
+}
+
+[data-weather="snow"] {
+  --bg-a: #dbeafe;
+  --bg-b: #ffffff;
+  --bg-c: #b7c6d8;
+  --weather-glow: rgba(255, 255, 255, 0.44);
+}
+
+[data-weather="mist"] {
+  --bg-a: #c8d1dc;
+  --bg-b: #eef2f7;
+  --bg-c: #9da9b8;
+  --weather-glow: rgba(235, 241, 247, 0.38);
+}
