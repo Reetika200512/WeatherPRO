@@ -7,7 +7,6 @@ import {
   fetchOneCallByCoords,
   fetchOptional,
 } from './api.js';
-import { CONFIG } from './config.js';
 import {
   applyResolvedTheme,
   elements,
@@ -49,13 +48,6 @@ function initializeApp() {
   renderInitialState();
   setControls({ units: state.units, themeMode: state.themeMode });
   applyResolvedTheme(state.themeMode, false);
-
-  if (!hasApiKeyConfigured()) {
-    bindApiKeyModal();
-    showApiKeyModal();
-    return;
-  }
-
   bindEvents();
 
   if (state.activeLocation) {
@@ -75,46 +67,6 @@ function bindEvents() {
   document.addEventListener('click', (event) => {
     if (!elements.form.contains(event.target)) hideCitySuggestions();
   });
-}
-
-function hasApiKeyConfigured() {
-  return Boolean(CONFIG.apiKey && CONFIG.apiKey !== 'YOUR_OPENWEATHERMAP_API_KEY');
-}
-
-function bindApiKeyModal() {
-  const modal = document.getElementById('apiKeyModal');
-  const input = document.getElementById('apiKeyInput');
-  const saveButton = document.getElementById('apiKeySaveButton');
-
-  if (!modal || !input || !saveButton) return;
-
-  const saveKey = () => {
-    const value = input.value.trim();
-    if (!value) {
-      input.focus();
-      return;
-    }
-
-    localStorage.setItem('weatherpro-api-key', value);
-    window.location.reload();
-  };
-
-  saveButton.addEventListener('click', saveKey);
-  input.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      saveKey();
-    }
-  });
-}
-
-function showApiKeyModal() {
-  const modal = document.getElementById('apiKeyModal');
-  const input = document.getElementById('apiKeyInput');
-  if (!modal || !input) return;
-
-  modal.hidden = false;
-  input.focus();
 }
 
 async function handleSearchSubmit(event) {
